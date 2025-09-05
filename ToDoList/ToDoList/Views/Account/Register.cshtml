@@ -1,0 +1,29 @@
+﻿@model ToDoList.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h2 class="text-center mb-3">📝 Kayıt Ol</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Ad Soyad</label>
+                    <input asp-for="FullName" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Şifre</label>
+                    <input asp-for="Password" type="password" class="form-control" required />
+                </div>
+                <button class="btn btn-success w-100">Kayıt Ol</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="/Account/Login" class="btn btn-link">Giriş Yap</a>
+            </div>
+        </div>
+    </div>
+</div>

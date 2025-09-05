@@ -1,0 +1,32 @@
+﻿@model List<ToDoList.Models.ToDoItem>
+@{
+    ViewData["Title"] = "To-Do List";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="text-center mb-4">📝 To-Do List</h2>
+
+            <!-- Yeni görev ekleme -->
+            <form asp-action="Add" method="post" class="input-group mb-3">
+                <input type="text" name="title" class="form-control" placeholder="Yeni görev yaz..." required />
+                <button class="btn btn-primary">Ekle</button>
+            </form>
+
+            <!-- Görevler -->
+            <ul class="list-group">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center @(item.IsCompleted ? "bg-light" : "bg-white")">
+                        <span class="@(item.IsCompleted ? "completed" : "")">@item.Title</span>
+                        <div>
+                            <a asp-action="Toggle" asp-route-id="@item.Id" class="btn btn-sm btn-success me-1">✔</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">🗑</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
